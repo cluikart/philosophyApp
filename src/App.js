@@ -8,6 +8,7 @@ import Home from './components/home';
 function App() {
   return (
     <div className="page">
+    
       <Home/>
     </div>
   );
