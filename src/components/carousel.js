@@ -2,8 +2,8 @@ import React from "react";
 import ReactDom from "react-dom";
 import createReactClass from "create-react-class";
 import Car from "nuka-carousel";
+import pose from "react-pose";
 
-import Slider from "react-slick";
 
 import ari from "../Images/aristotle.jpg";
 import hb from "../Images/Hobbes.jpg";
@@ -13,68 +13,47 @@ import nz from "../Images/nietzsche.jpg";
 //import ari from "../Images/.jpg";
 
 
-const ImageSlide = ({ url }) => {
-    const styles = {
-      backgroundImage: `url(${url})`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center'
-    };
-  
-    return (
-      <div className="image-slide" style={styles}></div>
-    );
-  }
 
 var imgUrls = ["../Images/aristotle.jpg", "../Images/Hobbes.jpg", "../Images/kierkegaard.jpg", "../Images/Locke.jpg", "../Images/nietzsche.jpg"];
 
-var decorators = [{
-    component: createReactClass({
-      render() {
-        return (
-          <button
-            onClick={this.props.previousSlide}>
-            Previous Slide
-          </button>
-        )
-      }
-    }),
-    position: 'BottomCenter',
-    style: {
-      padding: 20
-    }
-  },
-  {
-    component: createReactClass({
-      render() {
-        return (
-          <button
-            onClick={this.props.nextSlide}>
-            Next Slide
-          </button>
-        )
-      }
-    }),
-    position: 'TopCenter',
-    style: {
-      padding: 20
-    }
-  }
-  ];
+const OpacityCard = pose.div({
+  visible: {opacity: 1},
+  hidden: {opacity: 0}
+});
+
+const show = {
+  display: 'inline-block'
+};
+const hide= {
+  display: 'none'
+};
 
 
 class Carousel extends React.Component {
     constructor(props) {
         super(props);
+        this.setPopup = this.setPopup.bind(this);
         this.state = {
             slideIndex: 0,
+            popup: false
         };
+    }
+
+    setPopup() {
+      this.setState({popup: true});
+      console.log("popup is set");
     }
 
     render() {
         
         return(
+          <div>
+            <OpacityCard style={this.state.popup ? show : hide} className="carousel-popup-opacityCard" pose={this.state.popup ? 'visible' : 'hidden'}>
+                  <div className="carousel-popup"></div>
+                </OpacityCard> 
             <div className="section carousel">
                 
+                 
             
                 <Car 
                     slidesToShow={1}
@@ -86,6 +65,7 @@ class Carousel extends React.Component {
                     autoplay={true}
                     pauseOnHover={true}
                     swiping={true}
+                    
                     slideIndex={this.state.slideIndex}
                     afterSlide={slideIndex => this.setState({ slideIndex })}
                     
@@ -101,19 +81,19 @@ class Carousel extends React.Component {
                       )}
                     >
 
-                    <div>
+                    <div onClick={this.setPopup}>
                     <img src={ari} alt="description of image" className="slide"/>
                     </div>
-                    <div>
+                    <div onClick={this.setPopup}>
                     <img src={lk} alt="description of image" className="slide"/>
                     </div>
-                    <div>
+                    <div onClick={this.setPopup}>
                     <img src={nz} alt="description of image" className="slide"/>
                     </div>
-                    <div>
+                    <div onClick={this.setPopup}>
                     <img src={kk} alt="description of image" className="slide"/>
-                    </div>
-                    <div>
+                    </div >
+                    <div onClick={this.setPopup}>
                     <img src={hb} alt="description of image" className="slide"/>
                     </div>
                 </Car>
@@ -130,8 +110,8 @@ class Carousel extends React.Component {
                     autoplay={true}
                     pauseOnHover={true}
                     swiping={true}
-                    initialSlideHeight="300"
-                    decorators={decorators}
+                    initialSlideHeight={300}
+                    // decorators={decorators}
                     slideIndex={this.state.slideIndex}
                     afterSlide={slideIndex => this.setState({ slideIndex })}
 
@@ -177,7 +157,8 @@ class Carousel extends React.Component {
                 {/* <Slider {...settings}>
                     <img src={imgUrls[0]}/>
                 </Slider>    */}
-            </div>    
+            </div>  
+            </div>  
         )
     }
 }
