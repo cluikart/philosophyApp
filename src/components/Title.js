@@ -70,7 +70,7 @@ class Title extends React.Component {
         return (
             <div>
                 
-                <OpacityCard style={this.state.popup ? show : hide} 
+                {/* <OpacityCard style={this.state.popup ? show : hide} 
                         className="Login-popup-opacityCard" 
                         pose={this.state.popup ? 'visible' : 'hidden'} 
                         onClick={this.unsetPopup}
@@ -87,7 +87,7 @@ class Title extends React.Component {
                         <button className="Login-Btn">Sign In</button>
                       </div>
                   </div>
-                </OpacityCard> 
+                </OpacityCard>  */}
                 
             <div className="title-wrapper">
 

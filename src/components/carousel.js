@@ -48,6 +48,8 @@ class Carousel extends React.Component {
         super(props);
         this.setPopup = this.setPopup.bind(this);
         this.unsetPopup = this.unsetPopup.bind(this);
+        this.handleChildClick = this.handleChildClick.bind(this);
+        // this.props.setCall = this.props.setCall.bind(this);
         this.state = {
             slideIndex: 0,
             popup: false,
@@ -56,24 +58,27 @@ class Carousel extends React.Component {
     }
 
     setPopup(person) {
-      this.setState({popup: true, currPers: person});
+      this.props.setCall(person);
       console.log("popup is set");
     }
     unsetPopup() {
       this.setState({popup: false});
       console.log("popup is unset");
     }
+    handleChildClick(e) {
+      e.stopPropagation();
+  }
 
     render() {
         
         return(
           <div>
             {/* The Carousel Popup */}
-            <OpacityCard style={this.state.popup ? show : hide} 
+            {/* <OpacityCard style={this.state.popup ? show : hide} 
                         className="carousel-popup-opacityCard" 
                         pose={this.state.popup ? 'visible' : 'hidden'} 
                         onClick={this.unsetPopup}>
-                  <div className="carousel-popup">
+                  <div className="carousel-popup" onClick={this.handleChildClick}>
                     <div className="carousel-popup-title-container">
                       <h2 className="carousel-popup-title">{this.state.currPers}</h2>
                       </div>
@@ -81,7 +86,7 @@ class Carousel extends React.Component {
                         <p className="carousel-popup-text">{personMap.get(this.state.currPers)}</p>
                       </div>
                   </div>
-                </OpacityCard> 
+                </OpacityCard>  */}
             <div className="section carousel">
                 
                  
