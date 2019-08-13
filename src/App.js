@@ -7,7 +7,7 @@ import Home from './components/home';
 
 function App() {
   return (
-    <div className="page">
+    <div className="p">
     
       <Home/>
     </div>

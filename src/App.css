@@ -20,6 +20,7 @@ height: 100%;
   display: flex;
   flex-wrap: wrap;
   flex: 0 0 100%;
+  overflow: auto;
   
 
 }
@@ -39,21 +40,24 @@ height: 100%;
 
 .title {
   
-  height: 300px;
+  height: 400px;
   flex: 0 0 100%;
   z-index: 0;
+  margin-bottom: -100px;
+  margin-top: 10px;
 
 }
 .title-image{
   flex: 0 0 100%;
   z-index: -11;
   width: 100vw;
-  height: 400px;
+  height: 420px;
   background-image: url("Old-world-map.jpg");
   animation-fill-mode: forwards;
   animation-name: blur-image;
   animation-duration: 1s;
   animation-delay: 1s;
+  margin-bottom: 245px;
   
 }
 /* .title-wrapper {
@@ -68,12 +72,13 @@ height: 100%;
   position: relative;
   top: 150px;
   margin-bottom:-1px;
+  z-index: 5;
   
   animation: blur-image 1s linear 1s 1 reverse forwards, fade 1s linear 1s 1 normal forwards;
   opacity: 0;
   filter: blur(8px);
   -webkit-filter: blur(8px);
-  text-shadow: 5px 10px 10px rgba(0,0,0,0.7);
+  text-shadow: 5px 10px 10px rgba(0,0,0,0.8);
   /* NOTE: Only a single transition is being allowed for some reason... */
   /* transition: color 1s; */
   transition: font-size 1s;
@@ -104,8 +109,8 @@ height: 100%;
 }
 #GOBtn {
   position: relative;
-  left: 50%;
-  top: 150px;
+  left: 47%;
+  top: 160px;
   background-color: rgba(0,0,0,0.2);
   border: solid white 4px;
   box-shadow: 0px 0px 0px rgba(0,0,0,0.5);
@@ -123,9 +128,10 @@ height: 100%;
   height: 180px;
   background-color: rgba(0,0,0,0.5);
   position: relative;
-  top: 100px;
+  top: 110px;
   left: 30vw;
-  margin-bottom:-210px;
+  z-index: 10;
+  margin-bottom:-190px;
   border-radius: 16px;
   box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
   border: solid white;
@@ -148,12 +154,12 @@ height: 100%;
 
 #card-2{
   left: 45vw;
-  top: 130px;
+  top: 120px;
 }
 
 #card-3{
   left: 60vw;
-  top: 160px;
+  top: 115px;
 }
 
 .card-icon {
@@ -173,6 +179,7 @@ height: 100%;
   background-color: #DDDDDD;
   box-shadow: 0px -10px 8px rgba(0,0,0,0.8), inset 0 1px 1px rgba(255,255,255,1);
   z-index: 3;
+  /* margin-bottom: 100px; */
   
 }
 .slide {
@@ -280,6 +287,36 @@ button:focus {
   outline: 0;
 }
 
+.books {
+  background-color: #4287f5;
+  
+}
+
+.people {
+  background-color: #ff389f;
+  
+}
+
+.account {
+  background-color: #ffc038;
+}
+
+.section-icon{
+  height: 70%;
+  width: 19vw;
+  transition: transform 0.5s;
+}
+.books:hover  .section-icon{
+  transform: scale(1.2);
+}
+.people:hover  .section-icon{
+  transform: scale(1.2);
+}
+
+.account:hover  .section-icon{
+  transform: scale(1.2);
+}
+
 /* The Carousel Popup */
 .carousel-popup {
   width: 60vw;
@@ -334,14 +371,20 @@ button:focus {
   margin: 0 auto;
 }
 
+/* The Login Popup */
+
 .Login-popup-opacityCard {
   text-align: center;
   width: 100vw;
-  height: 100%;
+  height: 70vw;
   background-color: rgba(0,0,0,0.5);
-  position: absolute;
-  z-index: 15;
+  position: sticky;
+  z-index: 25;
   top: 0px;
+  /* margin-bottom: -1200px; */
+  margin-bottom: -1900px;
+  margin-top: -210px;
+  padding: 0em;
 
 }
 
@@ -372,6 +415,7 @@ button:focus {
   padding-top: 5px;
   padding-bottom: 5px;
   transition: background-color 0.5s;
+  
 }
 
 .Login-popup-text-container {
@@ -426,12 +470,20 @@ button:focus {
   border-radius: 5px;
 }
 
-
+/* The Desktop Version */
 @media only screen and (min-width: 961px) {
   .page{
     width: 100vw;
     margin: 0 auto;
   }
+
+  .books, .people, .account{
+    width: 33%;
+  }
+
+  
+
+  
   
 }
 

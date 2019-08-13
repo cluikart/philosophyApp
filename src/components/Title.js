@@ -53,7 +53,8 @@ class Title extends React.Component {
     }
 
     setPopup(person) {
-        this.setState({popup: true, currPers: person});
+        // this.setState({popup: true, currPers: person});
+        this.props.callbackFromParent();
         
       }
       unsetPopup() {
@@ -90,17 +91,22 @@ class Title extends React.Component {
                 
             <div className="title-wrapper">
 
-                <Card className="card" id="card-1" pose={this.state.isGo ? 'visible' : 'hidden'}>
+                <Card className="card" id="card-1" 
+                    style={this.state.isGo ? {zIndex: '10'}: {zIndex: '-5'}}
+                    pose={this.state.isGo ? 'visible' : 'hidden'}>
                     <img src={book} className="card-icon"/>
                 </Card>    
 
-                <Card className="card" id="card-2" pose={this.state.isGo ? 'visible' : 'hidden'}>
+                <Card className="card" id="card-2" 
+                    style={this.state.isGo ? {zIndex: '10'}: {zIndex: '-5'}}
+                    pose={this.state.isGo ? 'visible' : 'hidden'}>
                     <img src={people} className="card-icon"/>
                 </Card>  
 
                 <Card className="card" id="card-3" 
-                pose={this.state.isGo ? 'visible' : 'hidden'}
-                onClick={this.setPopup}>
+                    style={this.state.isGo ? show : hide}
+                    pose={this.state.isGo ? 'visible' : 'hidden'}
+                    onClick={this.setPopup}>
                     <img src={account} className="card-icon"/>
                 </Card>  
 
